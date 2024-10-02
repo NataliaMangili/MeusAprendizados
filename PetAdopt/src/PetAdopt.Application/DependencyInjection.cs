@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using static System.Net.Mime.MediaTypeNames;
 
-namespace PetAdopt.Application
+namespace PetAdopt.Application;
+public static class DependencyInjection
 {
-    internal class DependencyInjection
+    public static IServiceCollection ConfigureApplication(this IServiceCollection services, IConfiguration configuration)
     {
+        //services.AddTransient<IArticleService, ArticleService>();
+
+        var application = typeof(IAssemblyMarker);
+
+        services.AddMediatR(configure =>
+        {
+            configure.RegisterServicesFromAssembly(application.Assembly);
+        });
+
+
+        return services;
     }
 }

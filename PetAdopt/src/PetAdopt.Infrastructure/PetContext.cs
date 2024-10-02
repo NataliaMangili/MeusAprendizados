@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using PetAdopt.Domain.AggregatesModels.AdoptionAggregate;
 
-namespace PetAdopt.Infrastructure
+namespace PetAdopt.Infrastructure;
+
+public class PetContext : DbContext
 {
-    internal class PetContext
+    public DbSet<Adoption> Adoptions { get; set; }
+
+    public PetContext(DbContextOptions<PetContext> options) : base(options)
     {
+
     }
+
+    //protected override void OnModelCreating(ModelBuilder modelBuilder)
+    //{
+    //    //modelBuilder.Entity<>()
+    //    //.OwnsOne(ua => ua.);
+
+    //    base.OnModelCreating(modelBuilder);
+    //}
 }

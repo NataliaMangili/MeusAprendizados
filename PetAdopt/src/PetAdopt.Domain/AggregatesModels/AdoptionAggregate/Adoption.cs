@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PetAdopt.Domain.ValueObjects;
 
-namespace PetAdopt.Domain.AggregatesModels.AdoptionAggregate
+namespace PetAdopt.Domain.AggregatesModels.AdoptionAggregate;
+
+public class Adoption : ModelBase
 {
-    internal class Adoption
-    {
-    }
+    public string Name { get; set; }
+    public string Cpf { get; set; }
+
+
 }
