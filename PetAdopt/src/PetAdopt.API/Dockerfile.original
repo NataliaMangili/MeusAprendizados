@@ -12,13 +12,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["src/PetAdopt.API/PetAdopt.API.csproj", "src/PetAdopt.API/"]
-COPY ["src/PetAdopt.Application/PetAdopt.Application.csproj", "src/PetAdopt.Application/"]
-COPY ["src/PetAdopt.Domain/PetAdopt.Domain.csproj", "src/PetAdopt.Domain/"]
-COPY ["src/PetAdopt.Infrastructure/PetAdopt.Infrastructure.csproj", "src/PetAdopt.Infrastructure/"]
-RUN dotnet restore "./src/PetAdopt.API/PetAdopt.API.csproj"
+COPY ["PetAdopt.API/PetAdopt.API.csproj", "PetAdopt.API/"]
+RUN dotnet restore "./PetAdopt.API/PetAdopt.API.csproj"
 COPY . .
-WORKDIR "/src/src/PetAdopt.API"
+WORKDIR "/src/PetAdopt.API"
 RUN dotnet build "./PetAdopt.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # Esta fase é usada para publicar o projeto de serviço a ser copiado para a fase final
