@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PetAdopt.Domain.Interfaces;
+using PetAdopt.Infrastructure.Persistence.Repositories;
 
 namespace PetAdopt.Infrastructure.DependencyInjection;
 public static class DependencyInjection

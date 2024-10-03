@@ -10,3 +10,18 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  petadoptdatabase:
+    image: mcr.microsoft.com/mssql/server:latest
+    restart: always
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Developer
+      - SA_PASSWORD=12345!#Admin
+    ports:
+      - "1435:1435"
+    volumes:
+      - db_data:/var/opt/mssql
+
+volumes:
+  db_data:
