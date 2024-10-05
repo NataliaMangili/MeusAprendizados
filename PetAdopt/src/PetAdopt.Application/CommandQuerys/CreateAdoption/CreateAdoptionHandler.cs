@@ -24,7 +24,7 @@ public class CreateAdoptionHandler : IRequestHandler<CreateAdoptionCommand, bool
         //var validator = new CreateAdoptionRequestVA(_logger);
         try
         {
-            Adoption adoption = new Adoption() { Name = "AdoptTeste" };
+            //AdoptionForm adoption = new AdoptionForm() { Name = "AdoptTeste" };
             var result = await _baseRepository.DatabaseSaveChanges();
             return result;
         }

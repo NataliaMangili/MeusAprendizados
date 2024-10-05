@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace PetAdopt.Domain.AggregatesModels;
 
-public abstract class ModelBase
+public abstract class BaseModel
 {
-    protected ModelBase()
+    protected BaseModel()
     {
         Id = Guid.NewGuid(); // Inicializa o Id com um novo Guid
     }
@@ -23,17 +23,14 @@ public abstract class ModelBase
     [Key, Column(TypeName = "UniqueIdentifier")]
     public Guid Id { get; set; }
 
-    public bool Excluido { get; set; }
+    public bool Excluded { get; set; }
 
     [Column(TypeName = "datetime2")]
-    public DateTime? Alteracao { get; set; } = DateTime.Now;
+    public DateTime? Alteration { get; set; } = DateTime.Now;
 
     [Column(TypeName = "datetime2")]
-    public DateTime? Inclusao { get; set; }
+    public DateTime? Inclusion { get; set; }
 
-    [Column(TypeName = "varchar(100)")]
-    public string? CodigoExterno { get; set; }
-
-    public virtual Nullable<Guid> UsuarioAlteracao { get; set; }
-    public virtual Nullable<Guid> UsuarioInclusao { get; set; }
+    public virtual Nullable<Guid> UserAlteration { get; set; }
+    public virtual Nullable<Guid> UserInclusion { get; set; }
 }
