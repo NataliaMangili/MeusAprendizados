@@ -1,6 +1,4 @@
-﻿using PetAdopt.Domain.AggregatesModels.PetAggregate;
-
-namespace PetAdopt.Domain.AggregatesModels.AdoptionAggregate;
+﻿namespace PetAdopt.Domain.AggregatesModels.AdoptionAggregate;
 
 public class AdoptionForm : BaseModel
 {

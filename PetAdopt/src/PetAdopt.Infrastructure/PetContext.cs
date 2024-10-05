@@ -1,7 +1,4 @@
-﻿using PetAdopt.Domain.Aggregates.NgoAggregate;
-using PetAdopt.Domain.AggregatesModels.NgoAggregate;
-
-namespace PetAdopt.Infrastructure;
+﻿namespace PetAdopt.Infrastructure;
 
 public class PetContext : DbContext
 {

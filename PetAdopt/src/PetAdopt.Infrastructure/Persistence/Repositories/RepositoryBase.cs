@@ -1,7 +1,4 @@
-﻿using PetAdopt.Domain.Interfaces;
-using PetAdopt.Infrastructure;
-
-namespace PetAdopt.Infrastructure.Persistence.Repositories;
+﻿namespace PetAdopt.Infrastructure.Persistence.Repositories;
 
 public class RepositoryBase(/*PetContext dbContext*/) : IRepositoryBase
 {

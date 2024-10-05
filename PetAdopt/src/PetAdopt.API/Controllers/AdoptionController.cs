@@ -1,8 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using PetAdopt.Application.CommandQuerys.CreateAdoption;
-
-namespace PetAdopt.API.Controllers;
+﻿namespace PetAdopt.API.Controllers;
 
 [ApiController]
 [Route("Adoption")]
