@@ -1,5 +1,5 @@
 ﻿namespace PetAdopt.Domain.AggregatesModels.AdoptionAggregate;
-
+//Futuramente, AdoptionForm poderá fazer parte de um agregado de Adoption
 public class AdoptionForm : BaseModel
 {
     private AdoptionForm() { }
