@@ -5,9 +5,9 @@ public class ContactVO
     // Construtor protegido, garantindo a imutabilidade do Value Object
     protected ContactVO() { }
 
-    public string Name { get; }
-    public string Phone { get; }
-    public string Email { get; }
+    public string Name { get; private set; }
+    public string Phone { get; private set; }
+    public string Email { get; private set; }
 
     public string FormatContact => $"{ Name } {Phone} - {Email}";
 

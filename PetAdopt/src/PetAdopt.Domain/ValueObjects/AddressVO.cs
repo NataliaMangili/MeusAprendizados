@@ -5,10 +5,10 @@ public class AddressVO
     // Construtor protegido, garantindo a imutabilidade do Value Object
     protected AddressVO() { }
 
-    public string Street { get; }
-    public string City { get; }
-    public string State { get; }
-    public string PostalCode { get; }
+    public string Street { get; private set; }
+    public string City { get; private set; }
+    public string State { get; private set; }
+    public string PostalCode { get; private set; }
 
     public string FormatedAddress => $"{Street}, {City} - {PostalCode} - {State}";
 

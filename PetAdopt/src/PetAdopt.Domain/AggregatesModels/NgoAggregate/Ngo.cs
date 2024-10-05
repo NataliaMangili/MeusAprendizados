@@ -1,21 +1,23 @@
 ﻿namespace PetAdopt.Domain.Aggregates.NgoAggregate;
 public class Ngo : BaseModel
 {
-    public Ngo(Guid mainResponsible, string apresentation, string history, DateTime creationDate)
+    public Ngo(Guid mainResponsibleId, string mainResponsibleName, string apresentation, string history, DateTime creationDate)
     {
-        MainResponsible = mainResponsible;
+        MainResponsibleId = mainResponsibleId;
+        MainResponsibleName = mainResponsibleName;
         Apresentation = apresentation;
         History = history;
         CreationDate = creationDate;
     }
 
-    public Guid MainResponsible { get; private set; }
+    public Guid MainResponsibleId { get; set; }
+    public string MainResponsibleName { get; set; }
 
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Code { get; private set; }
-    public string Apresentation { get; private set; }
-    public string History { get; private set; }
-    public DateTime CreationDate { get; private set; }
+    public int Code { get; set; }
+    public string Apresentation { get; set; }
+    public string History { get; set; }
+    public DateTime CreationDate { get; set; }
 
     //Ter um get all de ongs
     public void ValidateOng()
@@ -29,7 +31,7 @@ public class Ngo : BaseModel
 
 
     // Lógica de negócios: Atualizar o responsável principal
-    public void UpdateMainResponsible(Guid newResponsible) => MainResponsible = newResponsible;
+    public void UpdateMainResponsible(Guid newResponsible) => MainResponsibleId = newResponsible;
 
     // Lógica de negócios: Atualizar o resumo da ONG
     public void UpdateApresentation(string newApresentation)

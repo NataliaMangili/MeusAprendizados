@@ -1,11 +1,16 @@
-﻿namespace PetAdopt.Domain.AggregatesModels.AdoptionAggregate;
+﻿using PetAdopt.Domain.AggregatesModels.PetAggregate;
+
+namespace PetAdopt.Domain.AggregatesModels.AdoptionAggregate;
 
 public class AdoptionForm : BaseModel
 {
-    public AdoptionForm(Guid petId, Guid adopterId, AddressVO addressVO, string feedback, string adopterContact, string reasonForAdoption, int adopterHouseholdSize, bool adopterHasOtherPets, StatusFormEnum formStatus)
+    private AdoptionForm() { }
+
+    public AdoptionForm(Guid petId, Guid adopterId, string adopterName, AddressVO addressVO, string feedback, string adopterContact, string reasonForAdoption, int adopterHouseholdSize, bool adopterHasOtherPets, StatusFormEnum formStatus) : this()
     {
         PetId = petId;
         AdopterId = adopterId;
+        AdopterName = adopterName;
         this.addressVO = addressVO;
         Feedback = feedback;
         AdopterContact = adopterContact;
@@ -15,8 +20,12 @@ public class AdoptionForm : BaseModel
         FormStatus = formStatus;
     }
 
-    public Guid PetId { get; private set; }
+    [ForeignKey("Pet")]
+    public Guid PetId { get; set; }
+    public virtual Pet Pet { get; set; }
+
     public Guid AdopterId { get; private set; }
+    public string AdopterName { get; private set; }
     public AddressVO addressVO { get; private set; }
     public string Feedback { get; private set; }
     public string AdopterContact { get; private set; }
