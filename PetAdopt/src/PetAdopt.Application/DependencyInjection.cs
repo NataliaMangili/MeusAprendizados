@@ -7,8 +7,6 @@ public static class DependencyInjection
 {
     public static IServiceCollection ConfigureApplication(this IServiceCollection services, IConfiguration configuration)
     {
-        //services.AddTransient<IArticleService, ArticleService>();
-
         var application = typeof(IAssemblyMarker);
 
         services.AddMediatR(configure =>

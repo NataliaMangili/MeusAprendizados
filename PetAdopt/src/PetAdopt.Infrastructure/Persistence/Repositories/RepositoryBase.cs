@@ -2,14 +2,15 @@
 
 namespace PetAdopt.Infrastructure.Persistence.Repositories;
 
-public class RepositoryBase(PetContext dbContext, ILogger logger) : IRepositoryBase
+public class RepositoryBase(PetContext dbContext, ILogger<RepositoryBase> logger) : IRepositoryBase
 {
 
     public async Task<bool> DatabaseSaveChanges()
     {
         try
         {
-            return await dbContext.SaveChangesAsync() > 0;
+            var success = await dbContext.SaveChangesAsync() > 0;
+            return success;
         }
         catch (Exception e)
         {
@@ -22,8 +23,11 @@ public class RepositoryBase(PetContext dbContext, ILogger logger) : IRepositoryB
     {
         try
         {
-            var setEntity = await dbContext.Set<T>().AddAsync(entity);
-            return await DatabaseSaveChanges();
+            //return _context.Ngo.Add(ngo).Entity;
+
+            dbContext.Set<T>().Add(entity);
+            return true;
+            //return await DatabaseSaveChanges();
             //principle DRY
         }
         catch (Exception e)
