@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PetAdopt.Application;
+using PetAdopt.Application.AutoMapper;
 using PetAdopt.Infrastructure;
 using PetAdopt.Infrastructure.DependencyInjection;
 
@@ -10,6 +11,7 @@ string connectionString = builder.Configuration.GetConnectionString("DefaultConn
 builder.Services.AddDbContext<PetContext>(options =>
     options.UseSqlServer(connectionString));
 
+builder.Services.AddScoped<NgoMapper>();
 
 builder.Services.ConfigureApplication(builder.Configuration);
 builder.Services.ConfigureInfrastructure(builder.Configuration);
