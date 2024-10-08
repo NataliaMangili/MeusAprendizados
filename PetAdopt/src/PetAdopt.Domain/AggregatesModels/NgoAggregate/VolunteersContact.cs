@@ -1,4 +1,4 @@
-﻿namespace PetAdopt.Domain.Aggregates.OngAggregate;
+﻿namespace PetAdopt.Domain.Aggregates.NgoAggregate;
 
 public class VolunteersContact : BaseModel
 {

@@ -1,7 +1,22 @@
-﻿namespace PetAdopt.Domain.Aggregates.NgoAggregate;
+﻿using PetAdopt.Domain.AggregatesModels.NgoAggregate;
+using System.Collections.Generic;
+
+namespace PetAdopt.Domain.Aggregates.NgoAggregate;
 public class Ngo : BaseModel
 {
-    public Ngo(Guid mainResponsibleId, string mainResponsibleName, string apresentation, string history, DateTime creationDate)
+    private readonly List<NgoAddress> _ngoAddress;
+    public virtual IReadOnlyCollection<NgoAddress> NgoAddresses => _ngoAddress.AsReadOnly();
+
+    private readonly List<VolunteersContact> _volunteersContact;
+    public virtual IReadOnlyCollection<VolunteersContact> VolunteersContacts => _volunteersContact.AsReadOnly();
+
+    public Ngo()
+    {
+        _ngoAddress = new List<NgoAddress>();
+        _volunteersContact = new List<VolunteersContact>();
+    }
+
+    public Ngo(Guid mainResponsibleId, string mainResponsibleName, string apresentation, string history, DateTime creationDate) : this()
     {
         MainResponsibleId = mainResponsibleId;
         MainResponsibleName = mainResponsibleName;
@@ -19,7 +34,10 @@ public class Ngo : BaseModel
     public string History { get; set; }
     public DateTime CreationDate { get; set; }
 
-    //Ter um get all de ongs
+
+    public void AddAddress(List<AddressVO> addr) => _ngoAddress.AddRange(addr.Select(x => new NgoAddress(x)));
+    public void AddVolunteersContact(List<ContactVO> vc) => _volunteersContact.AddRange(vc.Select(x => new VolunteersContact(x)));
+
     public void ValidateOng()
     {
         if (string.IsNullOrWhiteSpace(Apresentation))
