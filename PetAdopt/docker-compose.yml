@@ -1,6 +1,8 @@
 services:
   petadopt.api:
     image: ${DOCKER_REGISTRY-}petadoptapi
+    container_name: petadoptapi
     build:
       context: .
       dockerfile: src/PetAdopt.API/Dockerfile
+

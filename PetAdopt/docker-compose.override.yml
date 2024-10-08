@@ -13,6 +13,10 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+    depends_on:
+      - petadopt.database
+    networks:
+      - my-network
 
   petadopt.database:
     image: mcr.microsoft.com/mssql/server:latest
@@ -25,6 +29,13 @@ services:
       - "1433:1433"
     volumes:
       - db_data:/var/opt/mssql
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
 
 volumes:
   db_data:
+
