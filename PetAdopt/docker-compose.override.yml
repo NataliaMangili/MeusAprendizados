@@ -4,7 +4,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       # - ASPNETCORE_HTTPS_PORTS=8081
-      # - ConnectionString=${Server=193.167.200.89;Database=;User Id=321;Password=321;TrustServerCertificate=True;Trusted_Connection=false;}
+      - ConnectionString=Server=petadopt.database,1433;Database=PetAdopt;User Id=sa;Password=12345!#Admin;TrustServerCertificate=True;Trusted_Connection=false;
       - OrchestratorType=${ORCHESTRATOR_TYPE}
       - PATH_BASE=/petadopt.api
     ports:
