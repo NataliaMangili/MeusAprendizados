@@ -33,6 +33,12 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<PetContext>();
+    dbContext.Database.Migrate(); // Aplica as migrações
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
