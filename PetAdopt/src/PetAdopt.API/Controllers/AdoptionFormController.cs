@@ -1,7 +1,4 @@
-﻿using PetAdopt.Domain.AggregatesModels.PetAggregate;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace PetAdopt.API.Controllers;
+﻿namespace PetAdopt.API.Controllers;
 
 [ApiController]
 [Route("AdoptionForm")]

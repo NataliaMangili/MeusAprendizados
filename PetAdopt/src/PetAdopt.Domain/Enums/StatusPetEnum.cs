@@ -2,8 +2,8 @@
 
 public enum StatusPetEnum
 {
+    PendingAdoption,  // adoção pendente
     Adopted,          // adotado
-    PendingAdoption,  // adoção pendente de confirmação
     NotAvailable,     // não está disponível para adoção no momento
     InFosterCare,     // em lar temporário para cuidados
 }

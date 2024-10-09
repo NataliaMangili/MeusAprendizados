@@ -7,9 +7,9 @@ public class CreateAdoptionHandler : IRequestHandler<CreateNgoCommand, Result>
     private readonly IUnitOfWorkRepository _unitOfWork;
     private readonly NgoMapper _mapper;
     private readonly INgoRepository _ngoRepository;
-    private readonly ILogger<CreateNgoCommand> _logger;
+    private readonly ILogger<CreateAdoptionHandler> _logger;
 
-    public CreateAdoptionHandler(IUnitOfWorkRepository unitOfWork, NgoMapper mapper, ILogger<CreateNgoCommand> logger, INgoRepository ngoRepository)
+    public CreateAdoptionHandler(IUnitOfWorkRepository unitOfWork, NgoMapper mapper, ILogger<CreateAdoptionHandler> logger, INgoRepository ngoRepository)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;

@@ -41,7 +41,7 @@ public class Pet : BaseModel
     public int? Age { get; private set; }
     public bool IsNeutered { get; private set; }
     public bool HasSpecialNeeds { get; private set; }
-    public StatusPetEnum StatusPet { get; private set; }
+    public StatusPetEnum StatusPet { get; set; }
 
     public void UpdateIsNeutered() => IsNeutered = true;
 
