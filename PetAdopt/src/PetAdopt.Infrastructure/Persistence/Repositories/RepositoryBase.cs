@@ -1,7 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace PetAdopt.Infrastructure.Persistence.Repositories;
 
+//public class RepositoryBase<TEntity>(PetContext dbContext, ILogger<RepositoryBase<TEntity>> logger) : IRepositoryBase<TEntity> where TEntity : class
 public class RepositoryBase(PetContext dbContext, ILogger<RepositoryBase> logger) : IRepositoryBase
 {
 
@@ -19,14 +21,25 @@ public class RepositoryBase(PetContext dbContext, ILogger<RepositoryBase> logger
         }
     }
 
-    public async Task<bool> AddAsync<T>(T entity) where T : class
+    public async Task AddAsync<T>(T entity) where T : class
     {
         try
         {
-            //return _context.Ngo.Add(ngo).Entity;
-
             dbContext.Set<T>().Add(entity);
-            return true;
+        }
+        catch (Exception e)
+        {
+            throw;
+        }
+    }
+
+    public async Task UpdateAsync<T>(T entity) where T : class
+    {
+        try
+        {
+            dbContext.Attach(entity);
+            dbContext.Entry(entity).State = EntityState.Modified;
+
             //return await DatabaseSaveChanges();
             //principle DRY
         }
@@ -35,6 +48,14 @@ public class RepositoryBase(PetContext dbContext, ILogger<RepositoryBase> logger
             throw;
         }
     }
+
+    //Caso Repositorio Generico onde recebemos direto no repos, o T
+    //public void UpdateAsync(TEntity entity)
+    //{
+    //    dbContext.Attach(entity);
+    //    dbContext.Entry(entity).State = EntityState.Modified;
+    //    dbContext.SaveChanges();
+    //}
 
     public async Task<T?> GetAsync<T>(object id) where T : class
     {
