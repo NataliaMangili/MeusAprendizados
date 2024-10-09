@@ -2,10 +2,10 @@
 
 [ApiController]
 [Route("Ngo")]
-public class NgoController(IMediator mediator, ILogger<AdoptionController> logger) : ControllerBase
+public class NgoController(IMediator mediator, ILogger<NgoController> logger) : ControllerBase
 {
     private readonly IMediator _mediator = mediator;
-    private readonly ILogger<AdoptionController> _logger = logger;
+    private readonly ILogger<NgoController> _logger = logger;
 
     [HttpPost]
     [Route("CreateNgo")]

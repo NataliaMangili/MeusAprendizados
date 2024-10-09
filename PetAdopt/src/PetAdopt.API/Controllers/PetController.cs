@@ -2,10 +2,10 @@
 
 [ApiController]
 [Route("Pet")]
-public class PetController(IMediator mediator, ILogger<AdoptionController> logger) : ControllerBase
+public class PetController(IMediator mediator, ILogger<PetController> logger) : ControllerBase
 {
     private readonly IMediator _mediator = mediator;
-    private readonly ILogger<AdoptionController> _logger = logger;
+    private readonly ILogger<PetController> _logger = logger;
 
 
 }
