@@ -1,6 +1,8 @@
-﻿namespace PetAdopt.Application.CommandQuerys.CreateNgo;
+﻿using System.Threading.Channels;
 
-public class CreateAdoptionHandler : IRequestHandler<CreateNgoCommand, bool>
+namespace PetAdopt.Application.CommandQuerys.CreateNgo;
+
+public class CreateAdoptionHandler : IRequestHandler<CreateNgoCommand, Result>
 {
     private readonly IUnitOfWorkRepository _unitOfWork;
     private readonly NgoMapper _mapper;
@@ -15,21 +17,28 @@ public class CreateAdoptionHandler : IRequestHandler<CreateNgoCommand, bool>
         _logger = logger;
     }
 
-    public async Task<bool> Handle(CreateNgoCommand command, CancellationToken cancellationToken)
+    public async Task<Result> Handle(CreateNgoCommand command, CancellationToken cancellationToken)
     {
         try
         {
+            _unitOfWork.BeginTransaction();
+
             Ngo newNgo = _mapper.Map(command.request);
             newNgo.AddAddress(command.request.address);
             newNgo.AddVolunteersContact(command.request.contacts);
 
             _ngoRepository.Add(newNgo);
-            bool result = await _unitOfWork.CommitAsync();
-            return result;
+
+            int result = await _unitOfWork.CommitAsync();
+            if (result > 2) return Result.SuccessResult();
+
+            return Result.Failure("No changes were detected.");
+
         }
-        catch (ValidationExceptionErrorsBase ex)
+        catch (Exception ex)
         {
-            throw ex;
+            _logger.LogError(ex, "An unexpected error occurred while attempting to process the command.");
+            throw new Exception("Unexpected error occurred while attempting to save Ngo.");
         }
     }
 }
