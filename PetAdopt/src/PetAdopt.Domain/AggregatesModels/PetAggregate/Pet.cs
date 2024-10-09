@@ -14,10 +14,11 @@ public class Pet : BaseModel
         _petImages = new List<PetImage>();
     }
 
-    public Pet(string name, SpecieEnum species, string about, string breed, int? age, bool isNeutered, bool hasSpecialNeeds, StatusPetEnum status, Guid userId) : this()
+    public Pet(Guid ngoId, string name, SpecieEnum species, string about, string breed, int? age, bool isNeutered, bool hasSpecialNeeds, StatusPetEnum status) : this()
     {
         if (status == StatusPetEnum.Adopted) throw new ArgumentException("Newly created pets cannot have the status 'Adopted'.");
 
+        NgoId = ngoId;
         Name = name;
         Species = species;
         About = about;
@@ -26,8 +27,12 @@ public class Pet : BaseModel
         IsNeutered = isNeutered;
         HasSpecialNeeds = hasSpecialNeeds;
         StatusPet = status;
-        ResponsibleId = userId;
+        //ResponsibleId = userId;
     }
+
+    [ForeignKey("Ngo")]
+    public Guid NgoId { get; set; }
+    public virtual Ngo Ngo { get; set; }
 
     public string Name { get; private set; }
     public SpecieEnum Species { get; private set; }
@@ -37,7 +42,6 @@ public class Pet : BaseModel
     public bool IsNeutered { get; private set; }
     public bool HasSpecialNeeds { get; private set; }
     public StatusPetEnum StatusPet { get; private set; }
-    public Guid ResponsibleId { get; private set; }
 
     public void UpdateIsNeutered() => IsNeutered = true;
 

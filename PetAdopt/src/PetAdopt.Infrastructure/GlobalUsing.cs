@@ -7,3 +7,4 @@ global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 global using PetAdopt.Domain.Interfaces;
 global using PetAdopt.Infrastructure.Persistence.Repositories;
+global using PetAdopt.Domain.AggregatesModels.AdoptionFormAggregate;

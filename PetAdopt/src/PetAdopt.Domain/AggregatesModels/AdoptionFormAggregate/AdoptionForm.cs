@@ -32,8 +32,6 @@ public class AdoptionForm : BaseModel
     public bool AdopterHasOtherPets { get; private set; }
     public StatusFormEnum FormStatus { get; private set; }
 
-    //private readonly List<string> _adoptionFormLogs = new List<string>();
-    //public IReadOnlyCollection<string> AdoptionFormLogs => _adoptionFormLogs.AsReadOnly();
 
     public void ApproveAdoption()
     {

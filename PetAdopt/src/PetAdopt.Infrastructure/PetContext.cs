@@ -2,6 +2,7 @@
 
 public class PetContext : DbContext
 {
+    public DbSet<Adoption> Adoptions { get; set; }
     public DbSet<AdoptionForm> AdoptionForms { get; set; }
     public DbSet<Pet> Pets { get; set; }
     public DbSet<PetImage> PetImages { get; set; }
