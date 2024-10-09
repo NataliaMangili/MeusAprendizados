@@ -6,3 +6,4 @@ global using Microsoft.Extensions.Logging;
 global using PetAdopt.Application.AutoMapper;
 global using PetAdopt.Application.Exceptions;
 global using PetAdopt.Domain.Interfaces;
+global using PetAdopt.Domain.AggregatesModels.PetAggregate;
