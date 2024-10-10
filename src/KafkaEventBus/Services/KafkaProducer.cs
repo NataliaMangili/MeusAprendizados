@@ -24,13 +24,13 @@ public class KafkaProducer : IEventProducer
             var serializedMessage = JsonConvert.SerializeObject(message);
 
             // Envia a mensagem para o Kafka
-            await _producer.ProduceAsync(topic, new Message<Null, string> { Value = serializedMessage });
+            var deliveryResult = await _producer.ProduceAsync(topic, new Message<Null, string> { Value = serializedMessage });
             Console.WriteLine($"Mensagem publicada no tópico {topic}: {serializedMessage}");
 
         }
-        catch(Exception e)
+        catch (ProduceException<Null, string> ex)
         {
-            throw new Exception(e.Message);
+            Console.WriteLine($"Erro ao publicar mensagem no tópico {topic}: {ex.Error.Reason}");
         }
 
     }
