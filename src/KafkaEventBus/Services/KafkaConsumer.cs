@@ -42,9 +42,13 @@ public class KafkaConsumer : IEventConsumer
                     // Confirma o consumo da mensagem
                     _consumer.Commit(consumeResult);
                 }
-                catch (Exception ex)
+                catch (ConsumeException e)
                 {
-                   //tratar erro: Error consuming the message: ex.Message
+                    Console.WriteLine($"Error occurred: {e.Error.Reason}");
+                }
+                finally
+                {
+                    _consumer.Close(); // Fecha o consumidor corretamente
                 }
             }
         });
