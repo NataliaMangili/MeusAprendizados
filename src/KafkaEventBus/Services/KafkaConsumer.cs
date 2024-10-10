@@ -32,6 +32,7 @@ public class KafkaConsumer : IEventConsumer
                 {
                     // Consume uma mensagem do tópico
                     var consumeResult = _consumer.Consume();
+                    Console.WriteLine($"Mensagem recebida: {consumeResult.Message.Value}");
 
                     var message = JsonConvert.DeserializeObject<T>(consumeResult.Message.Value);
 

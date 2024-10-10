@@ -1,12 +1,18 @@
-using Microsoft.EntityFrameworkCore;
-using PetAdopt.Application;
-using PetAdopt.Application.AutoMapper;
-using PetAdopt.Infrastructure;
-using PetAdopt.Infrastructure.DependencyInjection;
+using KafkaEventBus.Interfaces;
+using KafkaEventBus.Services;
+using PetAdopt.Application.Events.DTOs;
+using PetAdopt.Application.Events.Handlers;
 
 var builder = WebApplication.CreateBuilder(args);
 
-string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
+
+//Section do AppSettings e classe de Config da Biblioteca do Kafka
+var kafkaSettings = builder.Configuration.GetSection("KafkaSettings").Get<KafkaSettings>();
+//Chamando o método de configuração
+builder.Services.KafkaConfigurationDI(kafkaSettings!);
+
+builder.Services.AddTransient<INotificationHandler<PetAdoptedSendEmailEvent>, PetAdoptedSendEmailEventHandler>();
 
 builder.Services.AddDbContext<PetContext>(options =>
     options.UseSqlServer(connectionString));
@@ -49,6 +55,15 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
+
+var eventConsumer = app.Services.GetRequiredService<IEventConsumer>();
+eventConsumer.Consume<PetAdoptedSendEmailEvent>("pet-adopted-topic", async (message) =>
+{
+    var mediator = app.Services.GetRequiredService<IMediator>();
+    await mediator.Publish(message); // Publica o evento para ser tratado pelo handler
+});
+
+
 app.MapControllers();
 
 app.Run();

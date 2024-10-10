@@ -15,4 +15,5 @@ public class Adoption : BaseModel
     public Guid AdopterId { get; set; }
 
     public DateTime AdoptionDate { get; private set; } = DateTime.UtcNow;
+
 }
