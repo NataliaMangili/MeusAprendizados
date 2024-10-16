@@ -1,11 +1,14 @@
-﻿namespace PetAdopt.API.Controllers;
+﻿using CrossCutting.Logging;
+
+namespace PetAdopt.API.Controllers;
 
 [ApiController]
 [Route("Ngo")]
-public class NgoController(IMediator mediator, ILogger<NgoController> logger) : ControllerBase
+public class NgoController(IMediator mediator, ILogger<NgoController> logger, ILogService logService) : ControllerBase
 {
     private readonly IMediator _mediator = mediator;
     private readonly ILogger<NgoController> _logger = logger;
+    private readonly ILogService _logService = logService;
 
     [HttpPost]
     [Route("CreateNgo")]
@@ -13,7 +16,8 @@ public class NgoController(IMediator mediator, ILogger<NgoController> logger) : 
     {
         try
         {
-            _logger.LogInformation("Starting CreateNgo");
+            //_logger.LogInformation("Starting CreateNgo");
+            await _logService.LogInformation("Starting CreateNgo");
 
             var commandNew = new CreateNgoCommand(request);
             var result = await _mediator.Send(commandNew);

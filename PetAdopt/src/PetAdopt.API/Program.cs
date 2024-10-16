@@ -3,6 +3,13 @@ using KafkaEventBus.Configurations;
 using KafkaEventBus.Interfaces;
 using PetAdopt.Application.Events.DTOs;
 using PetAdopt.Application.Events.Handlers;
+using Microsoft.EntityFrameworkCore;
+using PetAdopt.Application;
+using PetAdopt.Application.AutoMapper;
+using PetAdopt.Infrastructure;
+using PetAdopt.Infrastructure.DependencyInjection;
+using PetAdopt.Infrastructure.MongoLog;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +28,7 @@ builder.Services.AddScoped<NgoMapper>();
 
 builder.Services.ConfigureApplication(builder.Configuration);
 builder.Services.ConfigureInfrastructure(builder.Configuration);
+builder.Services.ConfigureMongo(builder.Configuration);
 
 
 builder.Services.AddCors(options =>
