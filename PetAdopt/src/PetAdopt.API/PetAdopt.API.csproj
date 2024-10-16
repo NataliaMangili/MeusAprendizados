@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\KafkaEventBus\KafkaEventBus.csproj" />
+    <ProjectReference Include="..\KafkaEventBus\KafkaEventBus.csproj" />
     <ProjectReference Include="..\PetAdopt.Application\PetAdopt.Application.csproj" />
     <ProjectReference Include="..\PetAdopt.Infrastructure\PetAdopt.Infrastructure.csproj" />
   </ItemGroup>

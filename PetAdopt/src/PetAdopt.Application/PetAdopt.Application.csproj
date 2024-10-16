@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\KafkaEventBus\KafkaEventBus.csproj" />
+    <ProjectReference Include="..\KafkaEventBus\KafkaEventBus.csproj" />
     <ProjectReference Include="..\PetAdopt.Domain\PetAdopt.Domain.csproj" />
   </ItemGroup>
 

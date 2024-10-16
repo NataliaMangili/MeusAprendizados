@@ -1,5 +1,6 @@
-using KafkaEventBus.Interfaces;
 using KafkaEventBus.Services;
+using KafkaEventBus.Configurations;
+using KafkaEventBus.Interfaces;
 using PetAdopt.Application.Events.DTOs;
 using PetAdopt.Application.Events.Handlers;
 
@@ -9,7 +10,6 @@ string connectionString = builder.Configuration.GetConnectionString("DefaultConn
 
 //Section do AppSettings e classe de Config da Biblioteca do Kafka
 var kafkaSettings = builder.Configuration.GetSection("KafkaSettings").Get<KafkaSettings>();
-//Chamando o método de configuração
 builder.Services.KafkaConfigurationDI(kafkaSettings!);
 
 builder.Services.AddTransient<INotificationHandler<PetAdoptedSendEmailEvent>, PetAdoptedSendEmailEventHandler>();

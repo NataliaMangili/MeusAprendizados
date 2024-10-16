@@ -2,7 +2,6 @@
 using PetAdopt.Application.Events.DTOs;
 using PetAdopt.Domain.AggregatesModels.AdoptionAggregate;
 using PetAdopt.Domain.AggregatesModels.AdoptionFormAggregate;
-using PetAdopt.Domain.AggregatesModels.PetAggregate;
 using PetAdopt.Domain.Enums;
 
 namespace PetAdopt.Application.CommandQuerys.AdoptPet;
