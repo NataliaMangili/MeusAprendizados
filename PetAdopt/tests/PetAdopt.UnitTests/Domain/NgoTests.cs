@@ -1,4 +1,6 @@
-﻿namespace PetAdopt.UnitTests.Domain.NgoAggregate;
+﻿using PetAdopt.UnitTests.GeneratorBogus.NgoAggregate;
+
+namespace PetAdopt.UnitTests.Domain;
 
 public class NgoTests
 {
@@ -137,7 +139,7 @@ public class NgoTests
         var ngo = new Ngo
         {
             Apresentation = "Some presentation",
-            CreationDate = default(DateTime)
+            CreationDate = default
         };
 
         // Act

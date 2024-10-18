@@ -1,4 +1,4 @@
-﻿namespace PetAdopt.UnitTests.GeneratorBogus;
+﻿namespace PetAdopt.UnitTests.GeneratorBogus.NgoAggregate;
 
 public class NgoGenerator
 {
