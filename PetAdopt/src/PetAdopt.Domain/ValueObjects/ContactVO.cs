@@ -13,7 +13,7 @@ public class ContactVO
 
     public ContactVO(string name, string phone, string email)
     {
-        if (string.IsNullOrWhiteSpace(phone) && string.IsNullOrWhiteSpace(email))
+        if (string.IsNullOrWhiteSpace(phone) || string.IsNullOrWhiteSpace(email))
             throw new ArgumentException("At least one information is required.");
 
         Name = name;
