@@ -1,4 +1,5 @@
 ﻿namespace CrossCutting.Logging;
+//SOLID
 public interface ILogService
 {
     Task LogInformation(string message);
