@@ -16,7 +16,7 @@ public class NgoController(IMediator mediator, ILogger<NgoController> logger, IL
     {
         try
         {
-            //_logger.LogInformation("Starting CreateNgo");
+            //_logger.LogInformation("Starting CreateNgo"); //Serilog
             await _logService.LogInformation("Starting CreateNgo");
 
             var commandNew = new CreateNgoCommand(request);

@@ -1,7 +1,4 @@
-﻿using PetAdopt.Domain.AggregatesModels.PetAggregate;
-using PetAdopt.Domain.Enums;
-
-namespace PetAdopt.UnitTests.GeneratorBogus.PetAggregate;
+﻿namespace PetAdopt.UnitTests.GeneratorBogus.PetAggregate;
 
 public sealed class PetGenerator : Faker<Pet>
 {
