@@ -16,7 +16,6 @@ public class NgoController(IMediator mediator, ILogger<NgoController> logger, IL
     {
         try
         {
-            var a = await _logService.GetErrorLogsAsync();
             //_logger.LogInformation("Starting CreateNgo");
             await _logService.LogInformation("Starting CreateNgo");
 
