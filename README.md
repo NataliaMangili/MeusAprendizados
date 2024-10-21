@@ -13,7 +13,7 @@ Com o tema em mente, meu objetivo nesse projeto é reformular a ideia pensada an
 
 ![image.png](image.png)
 
-**O que contem atualmente?**
+**O que contém atualmente?**
 
 ⬛DDD
 
@@ -25,14 +25,12 @@ Com o tema em mente, meu objetivo nesse projeto é reformular a ideia pensada an
 
 ⬛UnitOfWork Pattern
 
-**O que irá ter?**
-
 ⬛Eventos - Kafka
 
 ⬛Banco NoSql para Logs
 
 ⬛Testes
 
-⬛Microserviço Identity
+⬛Microserviço Identity -> Em construção
 
 Agradeço pela atenção!
