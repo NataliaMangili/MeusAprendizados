@@ -9,3 +9,4 @@ global using PetAdopt.Application;
 global using PetAdopt.Application.AutoMapper;
 global using PetAdopt.Infrastructure;
 global using PetAdopt.Infrastructure.DependencyInjection;
+global using PetAdopt.Application.Events.DTOs;

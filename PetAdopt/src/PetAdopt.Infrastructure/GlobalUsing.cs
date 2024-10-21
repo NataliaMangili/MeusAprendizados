@@ -8,3 +8,8 @@ global using Microsoft.Extensions.DependencyInjection;
 global using PetAdopt.Domain.Interfaces;
 global using PetAdopt.Infrastructure.Persistence.Repositories;
 global using PetAdopt.Domain.AggregatesModels.AdoptionFormAggregate;
+global using System.Net.Mail;
+global using System.Net;
+global using System.Data;
+global using Dapper;
+global using Microsoft.Data.SqlClient;
