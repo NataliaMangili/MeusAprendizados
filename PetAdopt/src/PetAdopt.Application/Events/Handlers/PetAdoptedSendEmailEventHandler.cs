@@ -1,15 +1,13 @@
-﻿using PetAdopt.Application.Events.DTOs;
-
-namespace PetAdopt.Application.Events.Handlers;
+﻿namespace PetAdopt.Application.Events.Handlers;
 
 public class PetAdoptedSendEmailEventHandler : INotificationHandler<PetAdoptedSendEmailEvent>
 {
-    //private readonly IEmailService _emailService;
+    private readonly IEmailService _emailService;
     private readonly ILogger<PetAdoptedSendEmailEventHandler> _logger;
 
-    public PetAdoptedSendEmailEventHandler(/*IEmailService emailService,*/ ILogger<PetAdoptedSendEmailEventHandler> logger)
+    public PetAdoptedSendEmailEventHandler(IEmailService emailService, ILogger<PetAdoptedSendEmailEventHandler> logger)
     {
-        //_emailService = emailService;
+        _emailService = emailService;
         _logger = logger;
     }
 
@@ -17,11 +15,13 @@ public class PetAdoptedSendEmailEventHandler : INotificationHandler<PetAdoptedSe
     {
         try
         {
-            Console.WriteLine($"Handling event: {petAdoptedEvent.Id}");
+            _logger.LogInformation($"Handling event: {petAdoptedEvent.Id}");
+
             // Template Email aqui
+            var body = LoadEmailTemplate("EmailTemplate.html");
 
             // Envio do e-mail
-            //await _emailService.SendEmailAsync(petAdoptedEvent.Contact), subject, body);
+            //await _emailService.SendEmailAsync(petAdoptedEvent.Contact, petAdoptedEvent.Contact, body);
 
             _logger.LogInformation($"Email sent to the adopter {petAdoptedEvent.Name} successfully");
         }
@@ -29,5 +29,12 @@ public class PetAdoptedSendEmailEventHandler : INotificationHandler<PetAdoptedSe
         {
             _logger.LogError(ex, "Error sending adoption email");
         }
+    }
+
+    public string LoadEmailTemplate(string templateName)
+    {
+        var template = Path.Combine(Directory.GetCurrentDirectory(), "Templates", templateName);
+        var content = File.ReadAllText(template);
+        return content;
     }
 }
