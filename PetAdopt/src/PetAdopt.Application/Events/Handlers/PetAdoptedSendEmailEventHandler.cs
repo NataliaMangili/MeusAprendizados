@@ -2,12 +2,12 @@
 
 public class PetAdoptedSendEmailEventHandler : INotificationHandler<PetAdoptedSendEmailEvent>
 {
-    private readonly IEmailService _emailService;
+    //private readonly IEmailService _emailService;
     private readonly ILogger<PetAdoptedSendEmailEventHandler> _logger;
 
-    public PetAdoptedSendEmailEventHandler(IEmailService emailService, ILogger<PetAdoptedSendEmailEventHandler> logger)
+    public PetAdoptedSendEmailEventHandler(/*IEmailService emailService,*/ ILogger<PetAdoptedSendEmailEventHandler> logger)
     {
-        _emailService = emailService;
+        //_emailService = emailService;
         _logger = logger;
     }
 
