@@ -1,6 +1,9 @@
-﻿namespace PetAdopt.API.Controllers;
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace PetAdopt.API.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("Pet")]
 public class PetController(IMediator mediator, ILogger<PetController> logger) : ControllerBase
 {

@@ -1,8 +1,10 @@
 ﻿using CrossCutting.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PetAdopt.API.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("Ngo")]
 public class NgoController(IMediator mediator, ILogger<NgoController> logger, ILogService logService) : ControllerBase
 {
